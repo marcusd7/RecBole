@@ -29,7 +29,8 @@ def run_recbole(model=None, dataset=None, config_file_list=None, config_dict=Non
         saved (bool, optional): Whether to save the model. Defaults to ``True``.
     """
     # configurations initialization
-    config = Config(model=model, dataset=dataset, config_file_list=config_file_list, config_dict=config_dict)
+    # case insensitive for model input
+    config = Config(model=model.upper(), dataset=dataset, config_file_list=config_file_list, config_dict=config_dict)
     init_seed(config['seed'], config['reproducibility'])
     # logger initialization
     init_logger(config)
